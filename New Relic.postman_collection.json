@@ -1,0 +1,1483 @@
+{
+	"info": {
+		"_postman_id": "8075ecc5-9d84-47da-9a96-6626c52f3771",
+		"name": "New Relic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Alerts",
+			"item": [
+				{
+					"name": "Alert Policies",
+					"item": [
+						{
+							"name": "Create Policy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"policy\": {\n    \"incident_preference\": \"string\",\n    \"name\": \"string\"\n  }\n}"
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_policies.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_policies.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Policy",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{api_key}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"policy\": {\n    \"incident_preference\": \"string\",\n    \"name\": \"string\"\n  }\n}"
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_policies/{id}.json?",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_policies",
+										"{id}.json"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Policy",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									}
+								],
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_policies/{policy_id}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_policies",
+										"{policy_id}.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List Policies",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{api_key}"
+									}
+								],
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_policies.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_policies.json"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "APM, Browser, Mobile Conditions",
+					"item": [
+						{
+							"name": "List Conditions",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{api_key}"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "policy_id",
+											"value": "{policy_id}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_conditions.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_conditions.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Conditions",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									}
+								],
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_conditions/{condition_id}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_conditions",
+										"{condition_id}.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Condition",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"condition\": {\n    \"type\": \"string\",\n    \"name\": \"string\",\n    \"enabled\": boolean,\n    \"entities\": [\n      integer\n    ],\n    \"metric\": \"string\",\n    \"metric\": \"string\",\n    \"gc_metric\": \"string\",\n    \"condition_scope\": \"string\",\n    \"violation_close_timer\": integer,\n    \"runbook_url\": \"string\",\n    \"terms\": [\n      {\n        \"duration\": \"string\",\n        \"operator\": \"string\",\n        \"priority\": \"string\",\n        \"threshold\": \"string\",\n        \"time_function\": \"string\"\n      }\n    ],\n    \"user_defined\": {\n      \"metric\": \"string\",\n      \"value_function\": \"string\"\n    }\n  }\n}"
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_conditions/{id}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_conditions",
+										"{id}.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Condition",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"condition\": {\n    \"type\": \"string\",\n    \"name\": \"string\",\n    \"enabled\": boolean,\n    \"entities\": [\n      integer\n    ],\n    \"metric\": \"string\",\n    \"gc_metric\": \"string\",\n    \"condition_scope\": \"string\",\n    \"violation_close_timer\": integer,\n    \"runbook_url\": \"string\",\n    \"terms\": [\n      {\n        \"duration\": \"string\",\n        \"operator\": \"string\",\n        \"priority\": \"string\",\n        \"threshold\": \"string\",\n        \"time_function\": \"string\"\n      }\n    ],\n    \"user_defined\": {\n      \"metric\": \"string\",\n      \"value_function\": \"string\"\n    }\n  }\n}"
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_conditions/policies/{policy_id}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_conditions",
+										"policies",
+										"{policy_id}.json"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Events, violations, incidents",
+					"item": [
+						{
+							"name": "List Violations",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{api_key}"
+									}
+								],
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_violations.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_violations.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List Incidents",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{api_key}"
+									}
+								],
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_incidents.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_incidents.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Show Incident",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{api_key}"
+									}
+								],
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_incidents/{id}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_incidents",
+										"{id}.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Acknowledge Incident",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{api_key}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_incidents/{id}/acknowledge.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_incidents",
+										"{id}",
+										"acknowledge.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Close Incident",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{api_key}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_incidents/{id}/close.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_incidents",
+										"{id}",
+										"close.json"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "External Service Conditions",
+					"item": [
+						{
+							"name": "Create Condition",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"external_service_condition\": {\n    \"type\": \"string\",\n    \"name\": \"string\",\n    \"enabled\": boolean,\n    \"entities\": [\n      integer\n    ],\n    \"external_service_url\": \"string\",\n    \"metric\": \"string\",\n    \"runbook_url\": \"string\",\n    \"terms\": [\n      {\n        \"duration\": \"string\",\n        \"operator\": \"string\",\n        \"priority\": \"string\",\n        \"threshold\": \"string\",\n        \"time_function\": \"string\"\n      }\n    ]\n  }\n}"
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_external_service_conditions/policies/{policy_id}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_external_service_conditions",
+										"policies",
+										"{policy_id}.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Conditions",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"external_service_condition\": {\n    \"type\": \"string\",\n    \"name\": \"string\",\n    \"enabled\": boolean,\n    \"entities\": [\n      integer\n    ],\n    \"external_service_url\": \"string\",\n    \"metric\": \"string\",\n    \"runbook_url\": \"string\",\n    \"terms\": [\n      {\n        \"duration\": \"string\",\n        \"operator\": \"string\",\n        \"priority\": \"string\",\n        \"threshold\": \"string\",\n        \"time_function\": \"string\"\n      }\n    ]\n  }\n}"
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_external_service_conditions/{id}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_external_service_conditions",
+										"{id}.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Conditions",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									}
+								],
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_external_service_conditions/{condition_id}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_external_service_conditions",
+										"{condition_id}.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List Conditions",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{api_key}"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "policy_id",
+											"value": "{policy_id}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_external_service_conditions.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_external_service_conditions.json"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Notification Channels",
+					"item": [
+						{
+							"name": "Create Channel",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"channel\": {\n    \"name\": \"string\",\n    \"type\": \"string\",\n    \"configuration\": \"hash\"\n  }\n}"
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_channels.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_channels.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Channel",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									}
+								],
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_channels/{channel_id}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_channels",
+										"{channel_id}.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List Channels",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{api_key}"
+									}
+								],
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_channels.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_channels.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update channel associated with policies",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "policy_id=policy_id&channel_ids=channel_id"
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_policy_channels.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_policy_channels.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Channel with associated policies",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "channel_id",
+											"value": "{channel_id}",
+											"type": "text"
+										},
+										{
+											"key": "policy_id",
+											"value": "{policy_id}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_policy_channels.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_policy_channels.json"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "NRQL Conditions",
+					"item": [
+						{
+							"name": "List Conditions",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nrql_condition\": {\n    \"type\": \"string\",\n    \"name\": \"string\",\n    \"runbook_url\": \"string\",\n    \"enabled\": boolean,\n    \"terms\": [\n      {\n        \"duration\": \"string\",\n        \"operator\": \"string\",\n        \"priority\": \"string\",\n        \"threshold\": \"string\",\n        \"time_function\": \"string\"\n      }\n    ],\n    \"value_function\": \"string\",\n    \"nrql\": {\n        \"query\": \"string\",\n        \"since_value\": \"string\"\n    }\n  }\n}"
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_nrql_conditions/policies/{policy_id}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_nrql_conditions",
+										"policies",
+										"{policy_id}.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Condition",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nrql_condition\": {\n    \"name\": \"string\",\n    \"runbook_url\": \"string\",\n    \"enabled\": boolean,\n    \"terms\": [\n      {\n        \"duration\": \"string\",\n        \"operator\": \"string\",\n        \"priority\": \"string\",\n        \"threshold\": \"string\",\n        \"time_function\": \"string\"\n      }\n    ],\n    \"value_function\": \"string\",\n    \"nrql\": {\n        \"query\": \"string\",\n        \"since_value\": \"string\"\n    }\n  }\n}"
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_nrql_conditions/{id}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_nrql_conditions",
+										"{id}.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Condition",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									}
+								],
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_nrql_conditions/{condition_id}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_nrql_conditions",
+										"{condition_id}.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List conditions",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{api_key}"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "policy_id",
+											"value": "{policy_id}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_nrql_conditions.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_nrql_conditions.json"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Synthetic Conditions",
+					"item": [
+						{
+							"name": "Create Condition",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"synthetics_condition\": {\n    \"name\": \"string\",\n    \"monitor_id\": \"string\",\n    \"runbook_url\": \"string\",\n    \"enabled\": boolean\n  }\n}"
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_synthetics_conditions/policies/{policy_id}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_synthetics_conditions",
+										"policies",
+										"{policy_id}.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Condition",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"synthetics_condition\": {\n    \"name\": \"string\",\n    \"monitor_id\": \"string\",\n    \"runbook_url\": \"string\",\n    \"enabled\": boolean\n  }\n}"
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_synthetics_conditions/{id}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_synthetics_conditions",
+										"{id}.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Condition",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									}
+								],
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_synthetics_conditions/{condition_id}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_synthetics_conditions",
+										"{condition_id}.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List Conditions",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{api_key}"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "policy_id",
+											"value": "policy_id",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_synthetics_conditions.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_synthetics_conditions.json"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Plugin Conditions",
+					"item": [
+						{
+							"name": "Create conditions for policies",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"plugins_condition\": {\n    \"name\": \"string\",\n    \"enabled\": boolean,\n    \"entities\": [\n      integer\n    ],\n    \"metric_description\": \"string\",\n    \"metric\": \"string\",\n    \"value_function\": \"string\",\n    \"runbook_url\": \"string\",\n    \"terms\": [\n      {\n        \"duration\": \"string\",\n        \"operator\": \"string\",\n        \"priority\": \"string\",\n        \"threshold\": \"string\",\n        \"time_function\": \"string\"\n      }\n    ],\n    \"plugin\": {\n      \"id\": \"string\",\n      \"guid\": \"string\"\n    }\n  }\n}"
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_plugins_conditions/policies/{policy_id}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_plugins_conditions",
+										"policies",
+										"{policy_id}.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update conditions for policies",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"plugins_condition\": {\n    \"name\": \"string\",\n    \"enabled\": boolean,\n    \"entities\": [\n      integer\n    ],\n    \"metric_description\": \"string\",\n    \"metric\": \"string\",\n    \"value_function\": \"string\",\n    \"runbook_url\": \"string\",\n    \"terms\": [\n      {\n        \"duration\": \"string\",\n        \"operator\": \"string\",\n        \"priority\": \"string\",\n        \"threshold\": \"string\",\n        \"time_function\": \"string\"\n      }\n    ],\n    \"plugin\": {\n      \"id\": \"string\",\n      \"guid\": \"string\"\n    }\n  }\n}"
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_plugins_conditions/{id}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_plugins_conditions",
+										"{id}.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete conditions from policies",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{admin_api_key}"
+									}
+								],
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_plugins_conditions/{condition_id}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_plugins_conditions",
+										"{condition_id}.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List existing conditions for policies",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{api_key}"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "policy_id",
+											"value": "{policy_id}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_plugins_conditions.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_plugins_conditions.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List Events",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{api_key}"
+									}
+								],
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_events.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_events.json"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Alert Entity",
+					"item": [
+						{
+							"name": "List condition by entity",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{api_key}"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "entity_type",
+											"value": "{entity_type}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_entity_conditions/{entity_id}.json?entity_type={entity_type}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_entity_conditions",
+										"{entity_id}.json"
+									],
+									"query": [
+										{
+											"key": "entity_type",
+											"value": "{entity_type}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add an entity to a condition",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{api_key}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "entity_type={entity_type}&condition_id={condition_id}"
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_entity_conditions/{entity_id}.json",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_entity_conditions",
+										"{entity_id}.json"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove an entity from a condition",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{api_key}"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "entity_type",
+											"value": "{entity_type}",
+											"type": "text"
+										},
+										{
+											"key": "condition_id",
+											"value": "{condition_id}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.newrelic.com/v2/alerts_entity_conditions/{entity_id}.json?entity_type={entity_type}&condition_id={condition_id}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"newrelic",
+										"com"
+									],
+									"path": [
+										"v2",
+										"alerts_entity_conditions",
+										"{entity_id}.json"
+									],
+									"query": [
+										{
+											"key": "entity_type",
+											"value": "{entity_type}"
+										},
+										{
+											"key": "condition_id",
+											"value": "{condition_id}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c3364341-d1d5-4e18-abb6-cab4c0bf180d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "03fb3764-e262-47d6-b3fd-84688cb4c046",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Send Metric",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Api-Key",
+						"value": "{{apiKey}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{ \n        \"metrics\":[{ \n           \"name\":\"memory.heap\", \n           \"type\":\"gauge\", \n           \"value\":2.3, \n           \"timestamp\":CURRENT_TIME_IN_MILLISECONDS_HERE, \n           \"attributes\":{\"host.name\":\"dev.server.com\"} \n           }] \n    }]"
+				},
+				"url": {
+					"raw": "https://metric-api.newrelic.com/metric/v1",
+					"protocol": "https",
+					"host": [
+						"metric-api",
+						"newrelic",
+						"com"
+					],
+					"path": [
+						"metric",
+						"v1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send Event",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HealthQuery",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Query-Key",
+						"value": "{{apiQueryKey}}"
+					}
+				],
+				"url": {
+					"raw": "https://insights-api.newrelic.com/v1/accounts/{{accountId}}/query?nrql={{nrqlQuery}}",
+					"protocol": "https",
+					"host": [
+						"insights-api",
+						"newrelic",
+						"com"
+					],
+					"path": [
+						"v1",
+						"accounts",
+						"{{accountId}}",
+						"query"
+					],
+					"query": [
+						{
+							"key": "nrql",
+							"value": "{{nrqlQuery}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "030be156-6b58-4d8a-b26c-9ac49e615364",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "b35ea710-da59-441e-9e2a-4e58e86e70e0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
